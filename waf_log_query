@@ -1,0 +1,4 @@
+AzureDiagnostics 
+| where ResourceType == "APPLICATIONGATEWAYS" and host_s == "your.domain.com" and httpStatus_d == 200
+| summarize count() by requestUri_s, bin(TimeGenerated, 5m) 
+| render timechart
